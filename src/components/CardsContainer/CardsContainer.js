@@ -1,19 +1,15 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import PokimonCard from '../PokemonCard/PokimonCard';
 
 const CardsContainer = () => {
 
   return(
-    <Container className='shadow-sm'>
+    <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
       <Row>
-        <Col>1</Col>
-        <Col>1</Col>
-        <Col>1</Col>
-      </Row>
-      <Row>
-        <Col>2</Col>
-        <Col>2</Col>
-        <Col>2</Col>
+        <Col><PokimonCard /></Col>
+        <Col><PokimonCard /></Col>
+        <Col><PokimonCard /></Col>
       </Row>
     </Container>
   )
