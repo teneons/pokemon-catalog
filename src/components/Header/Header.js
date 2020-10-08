@@ -1,14 +1,17 @@
 import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
+import logo from './pokemonLogo.svg';
 
 const Header = () => {
 
   return (
-    <Nav defaultActiveKey="/home" as="ul" className='d-flex justify-content-center'>
-      <Nav.Item as="li">
-        <Nav.Link href="/home" className='text-warning'>Pokemon Catalog</Nav.Link>
-      </Nav.Item>
-    </Nav>
+    <Navbar bg="dark" variant="dark" className='d-flex justify-content-center'>
+      <Navbar.Brand className='text-uppercase font-weight-bold'>
+      <img alt="Pokemon Catalog" src={logo} width="30" height="30" className="d-inline-block align-top"/>
+          {' '}
+          Pokemon Catalog
+    </Navbar.Brand>
+    </Navbar>
   )
 }
 
