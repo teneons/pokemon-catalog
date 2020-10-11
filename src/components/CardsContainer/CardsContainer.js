@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import PokimonCard from '../PokemonCard/PokimonCard';
 
 const CardsContainer = () => {
@@ -34,12 +34,13 @@ const CardsContainer = () => {
     )
   } else if (pokiLoad === false) {
     return (
-      <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
+      <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
         <Row>
           <Col><PokimonCard pokiItems={pokiDataBox[0]} /></Col>
           <Col><PokimonCard pokiItems={pokiDataBox[1]} /></Col>
           <Col><PokimonCard pokiItems={pokiDataBox[2]} /></Col>
         </Row>
+        <Button variant="btn btn-info" className='m-2'>More load</Button>
       </Container>
     )
   }
