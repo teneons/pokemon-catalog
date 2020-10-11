@@ -27,7 +27,7 @@ const CardsContainer = () => {
   //render components
   if (pokiLoad === true) {
     return (
-      <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
+      <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
         <div class="spinner-border text-light" style={{width: '10rem', height: '10rem'}} role="status">
           <span class="sr-only">Loading data..</span>
         </div>
