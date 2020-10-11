@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import PokimonCard from '../PokemonCard/PokimonCard';
 
 const CardsContainer = () => {
@@ -24,9 +24,15 @@ const CardsContainer = () => {
   const pokiDataBox = [pokiItems[0], pokiItems[1], pokiItems[2]]
 
 
-  if(pokiLoad === true) {
-    return (<h1>Data is loading..</h1>)
-  } else if(pokiLoad === false) {
+  if (pokiLoad === true) {
+    return (
+      <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
+        <div class="spinner-border text-light" style={{width: '10rem', height: '10rem'}} role="status">
+          <span class="sr-only">Loading data..</span>
+        </div>
+      </Container>
+    )
+  } else if (pokiLoad === false) {
     return (
       <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
         <Row>

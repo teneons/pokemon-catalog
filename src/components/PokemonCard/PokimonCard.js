@@ -8,7 +8,7 @@ const PokimonCard = (props) => {
       <Card.Img variant="top" src="https://pokeres.bastionbot.org/images/pokemon/1.png" />
       <Card.Body>
     <Card.Title>{props.pokiItems.name}</Card.Title>
-        <Button variant="danger" className='mr-1'>More info</Button>
+        <Button variant="danger" className='mr-1'>Info</Button>
       </Card.Body>
     </Card>
   )
