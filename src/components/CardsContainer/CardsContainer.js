@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 import PokimonCard from '../PokemonCard/PokimonCard';
 
 const CardsContainer = () => {
@@ -10,10 +10,10 @@ const CardsContainer = () => {
 
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')    //get data
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=42')    //get data
       .then(d => d.json())
       .then(pokiData => {   //set data
-        setPokiData(pokiData.results[2]);
+        setPokiData(pokiData.results);
         setLoad(false);
       })
       .catch((err) => {     //error
@@ -21,17 +21,23 @@ const CardsContainer = () => {
       })
   }, [pokiItems])    //nothing 
 
-  // const outData = pokiItems.map((item, id)=> {
-  //   return <Col><PokimonCard pokiItems={pokiItems}/></Col>
-  // })
+  const pokiDataBox = [pokiItems[0], pokiItems[1], pokiItems[2]]
 
-  return (
-    <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
-      <Row>
-      <Col><PokimonCard pokiItems={pokiItems}/></Col>
-      </Row>
-    </Container>
-  )
+
+  if(pokiLoad === true) {
+    return (<h1>Data is loading..</h1>)
+  } else if(pokiLoad === false) {
+    return (
+      <Container className='d-flex justify-content-around align-items-center shadow-sm bg-secondary'>
+        <Row>
+          <Col><PokimonCard pokiItems={pokiDataBox[0]} /></Col>
+          <Col><PokimonCard pokiItems={pokiDataBox[1]} /></Col>
+          <Col><PokimonCard pokiItems={pokiDataBox[2]} /></Col>
+        </Row>
+      </Container>
+    )
+  }
+
 }
 
 export default CardsContainer;
