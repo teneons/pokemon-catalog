@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import PokimonCard from '../PokemonCard/PokimonCard';
+import OutCards from '../OutCards/OutCards';
 
 const CardsContainer = () => {
 
@@ -36,20 +37,7 @@ const CardsContainer = () => {
   } else if (pokiLoad === false) {
     return (
       <div className='d-flex flex-column align-items-center'>
-        <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
-          <Row>
-            <Col><PokimonCard pokiItems={pokiDataBox[0]} pokiId={1} /></Col>
-            <Col><PokimonCard pokiItems={pokiDataBox[1]} pokiId={2} /></Col>
-            <Col><PokimonCard pokiItems={pokiDataBox[2]} pokiId={3} /></Col>
-          </Row>
-        </Container>
-        <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
-          <Row>
-            <Col><PokimonCard pokiItems={pokiDataBox[0]} pokiId={1} /></Col>
-            <Col><PokimonCard pokiItems={pokiDataBox[1]} pokiId={2} /></Col>
-            <Col><PokimonCard pokiItems={pokiDataBox[2]} pokiId={3} /></Col>
-          </Row>
-        </Container>
+        <OutCards pokiDataBox={pokiDataBox}/>
         <Button variant="btn btn-info" className='m-2'>Load more..</Button>
       </div>
     )
