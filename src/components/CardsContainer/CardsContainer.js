@@ -19,7 +19,7 @@ const CardsContainer = () => {
       .catch((err) => {     //error
         setError(true)
       })
-  }, [pokiItems])    //nothing 
+  }, [])    //nothing 
 
   const pokiDataBox = [pokiItems[0], pokiItems[1], pokiItems[2]]
 
