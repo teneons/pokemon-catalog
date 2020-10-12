@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import PokimonCard from '../PokemonCard/PokimonCard';
+import { Container, Button, Alert } from 'react-bootstrap';
 import OutCards from '../OutCards/OutCards';
 
 const CardsContainer = () => {
 
   const [pokiItems, setPokiData] = useState(42);
-  const [pokiErr, setError] = useState(false);
   const [pokiLoad, setLoad] = useState(true);
+  const [pokiErr, setError] = useState(false);
 
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const CardsContainer = () => {
         setPokiData(pokiData.results);
         setLoad(false);
       })
-      .catch((err) => {     //error
+      .catch(() => {     //error
         setError(true)
       })
   }, [])    //nothing 
@@ -37,9 +36,15 @@ const CardsContainer = () => {
   } else if (pokiLoad === false) {
     return (
       <div className='d-flex flex-column align-items-center'>
-        <OutCards pokiDataBox={pokiDataBox}/>
+        <OutCards pokiDataBox={pokiDataBox} />
         <Button variant="btn btn-info" className='m-2'>Load more..</Button>
       </div>
+    )
+  } else if (pokiErr === true) {
+    return (
+      <Alert variant="danger" onClose={() => setError(false)} dismissible>
+        <Alert.Heading>You have got an error😬</Alert.Heading>
+      </Alert>
     )
   }
 
