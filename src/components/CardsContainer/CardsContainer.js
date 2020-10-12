@@ -43,6 +43,13 @@ const CardsContainer = () => {
             <Col><PokimonCard pokiItems={pokiDataBox[2]} pokiId={3} /></Col>
           </Row>
         </Container>
+        <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
+          <Row>
+            <Col><PokimonCard pokiItems={pokiDataBox[0]} pokiId={1} /></Col>
+            <Col><PokimonCard pokiItems={pokiDataBox[1]} pokiId={2} /></Col>
+            <Col><PokimonCard pokiItems={pokiDataBox[2]} pokiId={3} /></Col>
+          </Row>
+        </Container>
         <Button variant="btn btn-info" className='m-2'>Load more..</Button>
       </div>
     )
