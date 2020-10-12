@@ -27,22 +27,24 @@ const CardsContainer = () => {
   //render components
   if (pokiLoad === true) {
     return (
-      <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
-        <div class="spinner-border text-light" style={{width: '10rem', height: '10rem'}} role="status">
+      <Container className='d-flex flex-column justify-content-around align-items-center bg-secondary '>
+        <div class="spinner-border text-light" style={{ width: '10rem', height: '10rem' }} role="status">
           <span class="sr-only">Loading data..</span>
         </div>
       </Container>
     )
   } else if (pokiLoad === false) {
     return (
-      <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
-        <Row>
-          <Col><PokimonCard pokiItems={pokiDataBox[0]} pokiId={1} /></Col>
-          <Col><PokimonCard pokiItems={pokiDataBox[1]} pokiId={2} /></Col>
-          <Col><PokimonCard pokiItems={pokiDataBox[2]} pokiId={3} /></Col>
-        </Row>
-        <Button variant="btn btn-info" className='m-2'>More load</Button>
-      </Container>
+      <div className='d-flex flex-column align-items-center'>
+        <Container className='d-flex justify-content-around align-items-center bg-secondary flex-column'>
+          <Row>
+            <Col><PokimonCard pokiItems={pokiDataBox[0]} pokiId={1} /></Col>
+            <Col><PokimonCard pokiItems={pokiDataBox[1]} pokiId={2} /></Col>
+            <Col><PokimonCard pokiItems={pokiDataBox[2]} pokiId={3} /></Col>
+          </Row>
+        </Container>
+        <Button variant="btn btn-info" className='m-2'>Load more..</Button>
+      </div>
     )
   }
 
