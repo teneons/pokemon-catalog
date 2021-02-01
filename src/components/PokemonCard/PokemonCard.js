@@ -8,7 +8,7 @@ const PokemonCard = (props) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
-    <Card className='d-flex justify-content-center m-3' id={props.pokeId}>
+    <Card className='d-flex justify-content-center m-3' key={props.pokeId}>
       <Card.Img variant="top" src={imgUrl} style={{ width: '16rem' }} />
       <Card.Body className='d-flex flex-column align-items-center'>
         <Card.Title>{props.pokeData.name}</Card.Title>
