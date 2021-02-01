@@ -20,7 +20,7 @@ const PokemonModal = (props) => {
   const pokemonModalRequest = () => {
     fetch(props.pokemonUrl)    //get data
     .then(dJson => dJson.json())
-    .then(data => setPokemonData(data))  //set data
+    .then(data => {setPokemonData(data)})  //set data
   }
 
   const [pokemonData, setPokemonData] = useState(42)
@@ -43,11 +43,15 @@ const PokemonModal = (props) => {
             <tbody>
               <tr>
                 <td>Height</td>
-                <td>Height</td>
+                <td>{pokemonData.height}</td>
               </tr>
               <tr>
                 <td>Weight</td>
-                <td>Weight</td>
+                <td>{pokemonData.weight}</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td>{pokemonData.height}</td>
               </tr>
               <tr>
                 <td>HP</td>
@@ -67,7 +71,7 @@ const PokemonModal = (props) => {
               </tr>
               <tr>
                 <td>Base experience</td>
-                <td>Base experience</td>
+                <td>{pokemonData.base_experience}</td>
               </tr>
               <tr>
                 <td>Abilities</td>
@@ -75,7 +79,7 @@ const PokemonModal = (props) => {
               </tr>
               <tr>
                 <td>Total moves</td>
-                <td>Total moves</td>
+                <td>{pokemonData}</td>
               </tr>
             </tbody>
           </Table>
