@@ -4,31 +4,38 @@ import OutCards from '../OutCards/OutCards';
 
 const CardsContainer = () => {
 
-  const [pokiItems, setPokiData] = useState([]);
-  const [pokiLoad, setLoad] = useState(true);
-  const [pokiErr, setError] = useState(false);
-
-
-  useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=9')    //get data
+  const [pokeItems, setPokeData] = useState([]);
+  const [pokeLoad, setLoad] = useState(true);
+  const [pokeErr, setError] = useState(false);
+  
+  //request
+  const pokeRequest = (limit=9) => {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=' + limit)    //get data
       .then(d => d.json())
-      .then(pokiData => {   //set data
-        setPokiData(pokiData.results);
+      .then(pokeData => {   //set data
+        setPokeData(pokeData.results);
         setLoad(false);
       })
       .catch(() => {     //error
         setError(true)
       })
-  }, [])    //nothing 
+  }
 
 
+  // //load more
   // const loadMore = (e) => {
-  //   e.preventDefault();
-  //   return <OutCards pokiDataBox={pokiDataBox} />
+  //   let lim = 9
+  //   pokeRequest(lim * 2)
   // }
 
+
+  useEffect(() => {
+    pokeRequest()
+  }, [pokeItems])    //nothing
+  
+
   //render components
-  if (pokiLoad === true) {
+  if (pokeLoad === true) {
     return (
       <Container className='d-flex flex-column justify-content-around align-items-center col-12' style={{height: 'calc(100vh - 8.4vh)'}}>
         <div className="spinner-border" variant="dark" style={{ width: '10rem', height: '10rem' }} role="status">
@@ -36,14 +43,14 @@ const CardsContainer = () => {
         </div>
       </Container>
     )
-  } else if (pokiLoad === false) {
+  } else if (pokeLoad === false) {
     return (
       <Container className='d-flex flex-column align-items-center'>
-        <OutCards pokeDataArr={pokiItems} />
+        <OutCards pokeDataArr={pokeItems} />
         <Button variant="btn btn-info" className='m-2' onClick={()=> 0 }>Load more..</Button>
       </Container>
     )
-  } else if (pokiErr === true) {
+  } else if (pokeErr === true) {
     return (
       <Alert variant="danger" onClose={() => setError(false)} dismissible>
         <Alert.Heading>You have got an error😬</Alert.Heading>
