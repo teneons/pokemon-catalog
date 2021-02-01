@@ -33,6 +33,52 @@ const PokemonModal = (props) => {
           <Modal.Title>{pokemonData.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Height</td>
+                <td>Height</td>
+              </tr>
+              <tr>
+                <td>Weight</td>
+                <td>Weight</td>
+              </tr>
+              <tr>
+                <td>HP</td>
+                <td>HP</td>
+              </tr>
+              <tr>
+                <td>Attack</td>
+                <td>Attack</td>
+              </tr>
+              <tr>
+                <td>Defense</td>
+                <td>Defense</td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td>Speed</td>
+              </tr>
+              <tr>
+                <td>Base experience</td>
+                <td>Base experience</td>
+              </tr>
+              <tr>
+                <td>Abilities</td>
+                <td>Abilities</td>
+              </tr>
+              <tr>
+                <td>Total moves</td>
+                <td>Total moves</td>
+              </tr>
+            </tbody>
+          </Table>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Ok</Button>
