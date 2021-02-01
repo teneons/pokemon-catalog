@@ -9,7 +9,9 @@ const CardsContainer = () => {
   const [pokeErr, setError] = useState(false);
   
   //request
-  const pokeRequest = (limit=9) => {
+  const pokeRequest = () => {
+    let limit = JSON.parse(localStorage.getItem('limit'))
+
     fetch('https://pokeapi.co/api/v2/pokemon?limit=' + limit)    //get data
       .then(d => d.json())
       .then(pokeData => {   //set data
@@ -21,17 +23,20 @@ const CardsContainer = () => {
       })
   }
 
-
-  // //load more
-  // const loadMore = (e) => {
-  //   let lim = 9
-  //   pokeRequest(lim * 2)
-  // }
-
-
-  useEffect(() => {
+  //load more
+  const loadMore = () => {
+    let limit = JSON.parse(localStorage.getItem('limit'))
+    limit *= 2;
+    localStorage.setItem('limit', JSON.stringify(limit))
     pokeRequest()
-  }, [pokeItems])    //nothing
+  }
+
+
+  //will mount
+  useEffect(() => {
+    localStorage.setItem('limit', JSON.stringify(9))
+    pokeRequest()
+  }, [])
   
 
   //render components
@@ -47,7 +52,7 @@ const CardsContainer = () => {
     return (
       <Container className='d-flex flex-column align-items-center'>
         <OutCards pokeDataArr={pokeItems} />
-        <Button variant="btn btn-info" className='m-2' onClick={()=> 0 }>Load more..</Button>
+        <Button variant="btn btn-info" className='m-2' onClick={()=> loadMore() }>Load more..</Button>
       </Container>
     )
   } else if (pokeErr === true) {
