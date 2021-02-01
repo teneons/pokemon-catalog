@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {Button, Modal} from 'react-bootstrap';
 
 const PokemonModal = (props) => {
@@ -6,7 +6,11 @@ const PokemonModal = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow(props.showModal);
+
+  useEffect(() => {
+    handleShow()
+  }, [props.showModal])
 
   return (
     <>
