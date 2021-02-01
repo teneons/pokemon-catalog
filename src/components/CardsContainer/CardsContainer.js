@@ -4,13 +4,13 @@ import OutCards from '../OutCards/OutCards';
 
 const CardsContainer = () => {
 
-  const [pokiItems, setPokiData] = useState(42);
+  const [pokiItems, setPokiData] = useState([]);
   const [pokiLoad, setLoad] = useState(true);
   const [pokiErr, setError] = useState(false);
 
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=42')    //get data
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=9')    //get data
       .then(d => d.json())
       .then(pokiData => {   //set data
         setPokiData(pokiData.results);
@@ -21,12 +21,11 @@ const CardsContainer = () => {
       })
   }, [])    //nothing 
 
-  const pokiDataBox = [pokiItems[0], pokiItems[1], pokiItems[2]];
 
-  const loadMore = (e) => {
-    e.preventDefault();
-    return <OutCards pokiDataBox={pokiDataBox} />
-  }
+  // const loadMore = (e) => {
+  //   e.preventDefault();
+  //   return <OutCards pokiDataBox={pokiDataBox} />
+  // }
 
   //render components
   if (pokiLoad === true) {
@@ -40,8 +39,8 @@ const CardsContainer = () => {
   } else if (pokiLoad === false) {
     return (
       <Container className='d-flex flex-column align-items-center'>
-        <OutCards pokiDataBox={pokiDataBox} />
-        <Button variant="btn btn-info" className='m-2' onClick={()=> <OutCards pokiDataBox={pokiDataBox} />}>Load more..</Button>
+        <OutCards pokeDataArr={pokiItems} />
+        <Button variant="btn btn-info" className='m-2' onClick={()=> 0 }>Load more..</Button>
       </Container>
     )
   } else if (pokiErr === true) {
