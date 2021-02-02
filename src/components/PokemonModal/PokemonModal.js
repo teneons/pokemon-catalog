@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Modal, Table} from 'react-bootstrap';
+import {Button, Modal, Table, Image} from 'react-bootstrap';
 
 const PokemonModal = (props) => {
   
@@ -28,7 +28,8 @@ const PokemonModal = (props) => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className='d-flex flex-column justify-content-center align-items-center'>
+          <Image src={pokemon !== null? `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png` : 'Img'} rounded style={{ width: '12rem' }} />
           <Modal.Title>{pokemon !== null? pokemon.name : 'Name'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
