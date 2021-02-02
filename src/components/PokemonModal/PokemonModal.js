@@ -3,18 +3,18 @@ import {Button, Modal, Table} from 'react-bootstrap';
 
 const PokemonModal = (props) => {
   
-  //will mount
-  useEffect(() => {
-    handleShow()
-    pokemonModalRequest()
-  }, [props.showModal])
-
-
   //show/hide modal
   const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(props.showModal);
 
+    
+  //will mount
+  useEffect(() => {
+    handleShow()
+    pokemonModalRequest()
+
+  }, [props.showModal])
   
   const [pokemon, setPokemonData] = useState(null)
 
