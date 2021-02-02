@@ -28,7 +28,7 @@ const PokemonCard = (props) => {
         </div>
         <Button variant="outline-danger" className='mr-1' onClick={() => setShowModal(true)}>Info</Button>
       </Card.Body>
-      <PokemonModal showModal={showModal} key={props.pokeId} pokemonUrl={props.pokeData.url}/>
+      <PokemonModal showModal={showModal} key={props.pokeId} pokemonUrl={props.pokeData.url} pokemon={pokemon}/>
     </Card>
   )
 }

@@ -12,17 +12,13 @@ const PokemonModal = (props) => {
   //will mount
   useEffect(() => {
     handleShow()
-    pokemonModalRequest()
-
+    propsPokemon()
   }, [props.showModal])
   
-  const [pokemon, setPokemonData] = useState(null)
+  const [pokemon, setPokemonData] = useState(null)    //pokemon state
 
-  //request
-  const pokemonModalRequest = async () => {
-    await fetch(props.pokemonUrl)    //get data
-      .then(dJson => dJson.json())
-      .then(data => setPokemonData(data))  //set data
+  const propsPokemon = () => {
+    setPokemonData(props.pokemon)
   }
 
   return (
