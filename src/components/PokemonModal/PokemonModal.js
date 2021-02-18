@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Modal, Table, Image} from 'react-bootstrap';
+import {Modal, Table, Image} from 'react-bootstrap';
 
 const PokemonModal = (props) => {
-  
-  //show/hide modal
-  const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(props.showModal);
-
     
   //will mount
   useEffect(() => {
-    handleShow()
     propsPokemon()
-  }, [props.showModal])
+  }, [])
   
   const [pokemon, setPokemonData] = useState(null)    //pokemon state
 
@@ -23,7 +16,6 @@ const PokemonModal = (props) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className='d-flex flex-column justify-content-center align-items-center'>
           <Image src={pokemon !== null? `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png` : 'Img'} rounded style={{ width: '12rem' }} />
           <Modal.Title>{pokemon !== null? pokemon.name : 'Name'}</Modal.Title>
@@ -80,10 +72,6 @@ const PokemonModal = (props) => {
             </tbody>
           </Table>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Ok</Button>
-        </Modal.Footer>
-      </Modal>
     </>
   )
 }

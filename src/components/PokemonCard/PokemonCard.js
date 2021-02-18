@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Badge } from 'react-bootstrap';
+import { Card, Button, Badge, Modal } from 'react-bootstrap';
 import PokemonModal from '../PokemonModal/PokemonModal';
 
 const PokemonCard = (props) => {
   const imgUrl = `https://pokeres.bastionbot.org/images/pokemon/${props.pokeId}.png`;
 
-  const [showModal, setShowModal] = useState(false)   //show/hide modal
-  const [pokemon, setPokemonData] = useState(null)
+  const [pokemon, setPokemonData] = useState(null)    //pokemon state data
+
+  const [show, setShow] = useState(false);    //show/hide modal
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
   useEffect(()=> {
     pokemonModalRequest()
@@ -26,9 +30,11 @@ const PokemonCard = (props) => {
         <div className='d-flex justify-content-around m-2'>
           {pokemon !== null? (pokemon.types.map((i) => <Badge variant="dark">{i.type.name}</Badge>)) : 'Type'}
         </div>
-        <Button variant="outline-danger" className='mr-1' onClick={() => setShowModal(true)}>Info</Button>
+        <Button variant="outline-danger" className='mr-1' onClick={handleShow}>Info</Button>
       </Card.Body>
-      <PokemonModal showModal={showModal} key={props.pokeId} pokemonUrl={props.pokeData.url} pokemon={pokemon}/>
+      <Modal show={show} onHide={handleClose}>
+        <PokemonModal key={props.pokeId} pokemonUrl={props.pokeData.url} pokemon={pokemon}/>
+      </Modal>
     </Card>
   )
 }
